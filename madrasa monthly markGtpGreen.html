@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#123d35">
+<title>മദ്റസ മാസ മാർക്ക് രജിസ്റ്റർ</title>
+<style>
+:root{--green:#123d35;--green2:#1d6654;--gold:#e8bd62;--bg:#f3f6f4;--ink:#172a25;--muted:#64756f;--line:#dce5e0;--white:#fff;--red:#a43a35}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,"Noto Sans Malayalam",Arial,sans-serif;font-size:18px;line-height:1.55}
+header{background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;padding:24px 18px 27px;border-radius:0 0 22px 22px}
+header .tag{font-size:14px;letter-spacing:.4px;color:#d5e7df}
+h1{font-size:28px;line-height:1.45;margin:7px 0;font-weight:800}
+header p{margin:0;color:#e3f0eb;font-size:16px;line-height:1.6}
+main{max-width:1100px;margin:auto;padding:16px 13px 42px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:17px;padding:18px;margin-bottom:15px;box-shadow:0 4px 14px #153b2c08}
+h2{font-size:21px;line-height:1.45;margin:0 0 14px;color:var(--green)}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}
+label{font-size:15px;line-height:1.5;color:var(--muted);font-weight:750}
+input,select,textarea{width:100%;min-width:0;border:1px solid #cbd8d1;border-radius:11px;background:#fff;padding:13px 12px;font:inherit;font-size:17px;line-height:1.4;color:var(--ink);outline:none;min-height:49px}
+input:focus,select:focus{border-color:var(--green2);box-shadow:0 0 0 3px #1d665418}
+.months{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.month{padding:13px 5px;min-height:48px;border:1px solid var(--line);border-radius:11px;background:#f9fbfa;text-align:center;font-size:15px;line-height:1.4;cursor:pointer;color:var(--ink)}
+.month.active{background:var(--green);color:#fff;border-color:var(--green)}
+.btnrow{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
+.btn{border:0;border-radius:11px;padding:13px 16px;min-height:48px;font:inherit;font-size:17px;line-height:1.4;font-weight:750;cursor:pointer;background:var(--green);color:white}
+.btn.secondary{background:#e5eee9;color:var(--green)}.btn.gold{background:var(--gold);color:#342a11}.btn.danger{background:#f8e8e6;color:var(--red)}
+.btn.small{padding:8px 11px;min-height:38px;font-size:15px}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;min-width:850px;background:white}
+th,td{padding:9px 7px;border-bottom:1px solid var(--line);text-align:center;font-size:15px;line-height:1.4}
+th{background:#edf4f0;color:var(--green);font-weight:800;white-space:normal}
+td input{padding:9px 6px;border-radius:8px;font-size:15px;min-width:66px;min-height:43px}
+td .student{min-width:165px}td .num{min-width:62px}
+.sublist{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.subitem{display:flex;align-items:center;gap:8px}.subitem input{flex:1;min-width:0}.subitem button{flex:none}
+.hint{font-size:14px;line-height:1.7;color:var(--muted);margin:9px 0 0}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.stat{background:#f1f7f3;border-radius:12px;padding:13px}.stat b{display:block;color:var(--green);font-size:25px;line-height:1.4}.stat span{font-size:13px;line-height:1.5;color:var(--muted)}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#183c32;color:white;padding:12px 18px;border-radius:30px;display:none;z-index:20;font-size:15px;max-width:90vw;text-align:center}
+.print-only{display:none}
+@media(min-width:650px){.months{grid-template-columns:repeat(6,1fr)}.formgrid{grid-template-columns:repeat(4,1fr)}.field.full{grid-column:span 2}.sublist{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:420px){body{font-size:17px}header{padding:22px 15px 24px}h1{font-size:25px}main{padding:12px 9px 32px}.panel{padding:14px;border-radius:14px}h2{font-size:19px}.formgrid{gap:10px}input,select,textarea{font-size:16px;padding:12px 9px}.month{font-size:14px;padding:12px 3px}.sublist{grid-template-columns:1fr}.stats{gap:6px}.stat{padding:10px 8px}.stat b{font-size:22px}.stat span{font-size:12px}.btn{font-size:16px;padding:12px 13px}}
+@page{size:A4 landscape;margin:5mm}
+@media print{
+html,body{background:#fff!important;margin:0!important;padding:0!important;font-size:8px!important;line-height:1.15!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+header{background:#fff!important;color:#111!important;border-radius:0!important;padding:0 0 3mm!important;border-bottom:1px solid #333}
+header .tag{display:none!important}header p{color:#333!important;font-size:7px!important;line-height:1.15!important}
+h1{color:#111!important;font-size:13px!important;line-height:1.15!important;margin:0 0 2mm!important}
+.no-print,.panel.settings,.panel.monthpanel,.panel.subjectpanel,.panel.stats-panel,.btnrow{display:none!important}
+main{padding:0!important;max-width:none!important;width:100%!important;margin:0!important}
+.panel{border:0!important;box-shadow:none!important;padding:0!important;margin:0!important;border-radius:0!important}
+.panel h2{color:#111!important;font-size:9px!important;line-height:1.1!important;margin:0 0 2mm!important}
+.tablewrap{overflow:visible!important;border:0!important;border-radius:0!important}
+table{min-width:0!important;width:100%!important;table-layout:fixed!important;border-collapse:collapse!important}
+th,td{font-size:7px!important;line-height:1.05!important;padding:1.2mm .8mm!important;border:.25mm solid #777!important;overflow-wrap:anywhere!important}
+th{background:#edf4f0!important;color:#111!important}
+td input{border:0!important;border-radius:0!important;padding:0!important;min-width:0!important;min-height:0!important;height:auto!important;width:100%!important;font-size:7px!important;line-height:1.05!important;box-shadow:none!important;background:transparent!important;color:#111!important}
+td .student,td .num{min-width:0!important}
+.formgrid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:1mm!important}label{font-size:7px!important;color:#111!important}
+.print-only{display:block!important;font-size:8px!important;margin-top:2mm!important}
+tr{break-inside:avoid!important;page-break-inside:avoid!important}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="tag">MADRASA • MONTHLY MARK REGISTER</div>
+  <h1>മദ്റസ മാസ മാർക്ക് രജിസ്റ്റർ</h1>
+  <p>മൊബൈലിലും കമ്പ്യൂട്ടറിലും ഉപയോഗിക്കാം · ഈ HTML പതിപ്പിൽ വിവരങ്ങൾ ഉപകരണത്തിൽ തന്നെ സൂക്ഷിക്കും</p>
+</header>
+<main>
+<section class="panel settings">
+<h2>🏫 മദ്റസയുടെ വിവരങ്ങൾ</h2>
+<div class="formgrid">
+<div class="field"><label for="madrasa">മദ്റസയുടെ പേര്</label><input id="madrasa" placeholder="മദ്റസയുടെ പേര്"></div>
+<div class="field"><label for="place">സ്ഥലം</label><input id="place" placeholder="സ്ഥലം"></div>
+<div class="field"><label for="klass">ക്ലാസ്</label><input id="klass" placeholder="ഉദാ: 5"></div>
+<div class="field"><label for="division">ഡിവിഷൻ</label><input id="division" placeholder="ഉദാ: A"></div>
+<div class="field"><label for="teacher">ക്ലാസ് അധ്യാപകന്റെ പേര്</label><input id="teacher" placeholder="അധ്യാപകന്റെ പേര്"></div>
+<div class="field"><label for="date">തീയതി</label><input id="date" type="date"></div>
+</div>
+<p class="hint">മുകളിൽ മദ്റസയുടെ പേരും സ്ഥലവും നിങ്ങൾക്ക് മാറ്റി നൽകാം. “സമസ്ത ബോർഡ്” എന്ന സ്ഥിരം തലക്കെട്ട് ഉൾപ്പെടുത്തിയിട്ടില്ല.</p>
+</section>
+
+<section class="panel monthpanel">
+<h2>📅 മാസം തിരഞ്ഞെടുക്കുക</h2>
+<div class="months" id="months"></div>
+</section>
+
+<section class="panel subjectpanel">
+<h2>📚 വിഷയങ്ങളും പരമാവധി മാർക്കും</h2>
+<div class="sublist" id="subjects"></div>
+<div class="btnrow no-print"><button class="btn secondary" onclick="addSubject()">＋ വിഷയം ചേർക്കുക</button><button class="btn secondary" onclick="resetSubjects()">PDF-ലെ വിഷയങ്ങൾ പുനഃസ്ഥാപിക്കുക</button></div>
+<p class="hint">PDF-ൽ നൽകിയിരിക്കുന്ന ക്രമം അനുസരിച്ച് വിഷയങ്ങൾ ചേർത്തിട്ടുണ്ട്. ആവശ്യമെങ്കിൽ പേരും പരമാവധി മാർക്കും മാറ്റാം.</p>
+</section>
+
+<section class="panel stats-panel">
+<h2>📊 ക്ലാസ് സംഗ്രഹം</h2><div class="stats">
+<div class="stat"><b id="studentCount">0</b><span>വിദ്യാർത്ഥികൾ</span></div>
+<div class="stat"><b id="totalMarks">0</b><span>നൽകിയ മാർക്ക്</span></div>
+<div class="stat"><b id="average">—</b><span>ശരാശരി ശതമാനം</span></div>
+</div></section>
+
+<section class="panel">
+<h2>📝 വിദ്യാർത്ഥികളുടെ മാർക്ക്</h2>
+<div class="tablewrap"><table id="register"><thead></thead><tbody></tbody></table></div>
+<div class="btnrow no-print">
+<button class="btn" onclick="addStudent()">＋ വിദ്യാർത്ഥിയെ ചേർക്കുക</button>
+<button class="btn gold" onclick="saveData()">💾 സേവ് ചെയ്യുക</button>
+<button class="btn secondary" onclick="window.print()">🖨️ പ്രിന്റ് / PDF</button>
+<button class="btn secondary" onclick="exportCSV()">⬇️ Excel-ൽ തുറക്കാവുന്ന ഫയൽ</button>
+<button class="btn danger" onclick="clearMarks()">മാർക്കുകൾ മായ്ക്കുക</button>
+</div>
+<p class="hint no-print">സേവ് ചെയ്ത വിവരങ്ങൾ ഈ ബ്രൗസറിലും ഈ ഉപകരണത്തിലും മാത്രമാണ് സൂക്ഷിക്കുന്നത്. മറ്റൊരു മൊബൈലിലേക്ക് സ്വയം സിങ്ക് ആവില്ല. ഇടയ്ക്കിടെ “സേവ് ചെയ്യുക” അമർത്തുക. A4-ൽ 25 കുട്ടികളെ ഒറ്റ പേജിൽ ലഭിക്കാൻ Landscape പ്രിന്റ് ക്രമീകരണം ഉപയോഗിക്കുന്നു.</p>
+</section>
+<div class="print-only" style="font-size:10px;margin-top:8px">ക്ലാസ് അധ്യാപകന്റെ ഒപ്പ്: ____________________ &nbsp;&nbsp;&nbsp; തീയതി: ____________________</div>
+</main><div class="toast" id="toast"></div>
+<script>
+const defaultSubjects=[
+ ["വായന",20],["എഴുത്ത്",20],["കർമ്മം",20],["ശീലം",15],["വേഷം",15],["ഹാജർ",10],["അസൈൻമെന്റ്",10],["ഖുർആൻ ഹിഫ്ള്",100]
+];
+const monthNames=["ദുൽഖഅ്ദ്","ദുൽഹിജ്ജ്","മുഹറം","സഫർ","റബീഉൽ അവ്വൽ","റബീഉൽ ആഖിർ","ജമാദുൽ ഊലാ","ജമാദുൽ ആഖിറ","റജബ്","ശഅ്ബാൻ","റമളാൻ","ശവ്വാൽ"];
+let subjects=defaultSubjects.map(x=>({name:x[0],max:x[1]})), students=[], activeMonth=0;
+const $=id=>document.getElementById(id);
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function toast(msg){let t=$("toast");t.textContent=msg;t.style.display="block";setTimeout(()=>t.style.display="none",2200)}
+function renderMonths(){$("months").innerHTML=monthNames.map((m,i)=>`<button class="month ${i===activeMonth?'active':''}" onclick="setMonth(${i})">${m}</button>`).join("")}
+function setMonth(i){activeMonth=i;renderMonths();renderTable();saveData(false)}
+function renderSubjects(){$("subjects").innerHTML=subjects.map((s,i)=>`<div class="subitem"><input aria-label="വിഷയത്തിന്റെ പേര്" value="${esc(s.name)}" onchange="subjects[${i}].name=this.value;renderTable();saveData(false)"><input aria-label="പരമാവധി മാർക്ക്" type="number" min="0" value="${s.max}" style="max-width:75px" onchange="subjects[${i}].max=Math.max(0,+this.value||0);renderTable();updateStats();saveData(false)"><button class="btn danger small no-print" onclick="removeSubject(${i})" title="വിഷയം നീക്കുക">×</button></div>`).join("")}
+function addSubject(){subjects.push({name:"പുതിയ വിഷയം",max:10});renderSubjects();renderTable();saveData(false)}
+function removeSubject(i){subjects.splice(i,1);renderSubjects();renderTable();updateStats();saveData(false)}
+function resetSubjects(){subjects=defaultSubjects.map(x=>({name:x[0],max:x[1]}));renderSubjects();renderTable();updateStats();saveData(false)}
+function addStudent(){students.push({name:"",number:"",marks:subjects.map(()=>Array(12).fill(""))});renderTable();updateStats();saveData(false)}
+function renderTable(){
+ let head='<tr><th>ക്രമം</th><th>വിദ്യാർത്ഥിയുടെ പേര്</th><th>നമ്പർ</th>'+subjects.map(s=>`<th>${esc(s.name)}<br><small>/${s.max}</small></th>`).join('')+'<th>ആകെ</th><th class="no-print">നീക്കുക</th></tr>';
+ $("register").querySelector("thead").innerHTML=head;
+ $("register").querySelector("tbody").innerHTML=students.map((st,ri)=>{
+  while(!st.marks)st.marks=[];
+  return `<tr><td>${ri+1}</td><td><input class="student" placeholder="വിദ്യാർത്ഥിയുടെ പേര്" value="${esc(st.name)}" onchange="students[${ri}].name=this.value;saveData(false)"></td><td><input class="num" placeholder="നമ്പർ" value="${esc(st.number)}" onchange="students[${ri}].number=this.value;saveData(false)"></td>`+
+  subjects.map((s,si)=>{let val=(st.marks[si]||[])[activeMonth]??"";return `<td><input class="num" type="number" min="0" max="${s.max}" value="${esc(val)}" aria-label="${esc(s.name)} മാർക്ക്" onchange="setMark(${ri},${si},this.value)" oninput="updateStats()"></td>`}).join('')+
+  `<td><strong>${subjects.reduce((sum,s,si)=>sum+(Number((st.marks[si]||[])[activeMonth])||0),0)}</strong></td><td class="no-print"><button class="btn danger small" onclick="removeStudent(${ri})">×</button></td></tr>`
+ }).join("");
+ updateStats()
+}
+function setMark(ri,si,val){if(!students[ri].marks[si])students[ri].marks[si]=Array(12).fill("");students[ri].marks[si][activeMonth]=val;renderTable();saveData(false)}
+function removeStudent(i){if(confirm("ഈ വിദ്യാർത്ഥിയെ നീക്കണോ?")){students.splice(i,1);renderTable();saveData(false)}}
+function updateStats(){let total=0,got=0;students.forEach(st=>subjects.forEach((s,si)=>{let v=Number((st.marks[si]||[])[activeMonth]);if(Number.isFinite(v)&&v>0){got+=v;total+=s.max}}));$("studentCount").textContent=students.length;$("totalMarks").textContent=got;$("average").textContent=total?Math.round(got/total*100)+"%":"—"}
+function getData(){return {madrasa:$("madrasa").value,place:$("place").value,klass:$("klass").value,division:$("division").value,teacher:$("teacher").value,date:$("date").value,subjects,students,activeMonth}}
+function saveData(show=true){try{localStorage.setItem("madrasaMarkRegisterV1",JSON.stringify(getData()));if(show)toast("വിവരങ്ങൾ സേവ് ചെയ്തു")}catch(e){if(show)toast("സേവ് ചെയ്യാൻ കഴിഞ്ഞില്ല")}}
+function loadData(){try{let d=JSON.parse(localStorage.getItem("madrasaMarkRegisterV1")||"null");if(!d)return;["madrasa","place","klass","division","teacher","date"].forEach(k=>$(k).value=d[k]||"");if(d.subjects?.length)subjects=d.subjects;if(Array.isArray(d.students))students=d.students;activeMonth=Math.max(0,Math.min(11,d.activeMonth||0))}catch(e){}}
+function clearMarks(){if(confirm("എല്ലാ മാസങ്ങളിലെയും വിദ്യാർത്ഥികളുടെ മാർക്കുകൾ മായ്ക്കണോ?")){students.forEach(st=>st.marks=subjects.map(()=>Array(12).fill("")));renderTable();saveData(false);toast("മാർക്കുകൾ മായ്ച്ചു")}}
+function exportCSV(){let rows=[["മദ്റസയുടെ പേര്",$("madrasa").value],["സ്ഥലം",$("place").value],["ക്ലാസ്",$("klass").value],["ഡിവിഷൻ",$("division").value],["മാസം",monthNames[activeMonth]],[],["ക്രമം","വിദ്യാർത്ഥിയുടെ പേര്","നമ്പർ",...subjects.map(s=>s.name),"ആകെ"]];students.forEach((st,i)=>{let vals=subjects.map((s,si)=>Number((st.marks[si]||[])[activeMonth])||0);rows.push([i+1,st.name,st.number,...vals,vals.reduce((a,b)=>a+b,0)])});let csv="\uFEFF"+rows.map(r=>r.map(v=>'"'+String(v??"").replace(/"/g,'""')+'"').join(",")).join("\r\n");let a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8;"}));a.download="madrasa-mark-register.csv";a.click();URL.revokeObjectURL(a.href)}
+["madrasa","place","klass","division","teacher","date"].forEach(k=>$(k).addEventListener("change",()=>saveData(false)));
+loadData();renderMonths();renderSubjects();renderTable();
+if(!students.length){addStudent();addStudent();addStudent()}
+</script>
+</body></html>
